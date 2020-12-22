@@ -27,7 +27,6 @@
 /* Size of the Data Set */
 #define SIZE (40)
 
-
 void print_array(unsigned char *ptr);
 void sort_array(unsigned char *ptr);
 void print_statistics(unsigned char *ptr);
@@ -35,7 +34,8 @@ unsigned char find_median(unsigned char *ptr, unsigned int len);
 unsigned char find_minimum(unsigned char *ptr, unsigned int len);
 unsigned char find_maximum(unsigned char *ptr, unsigned int len);
 unsigned char find_mean(unsigned char *ptr, unsigned int len);
-
+unsigned char val;
+unsigned char *p;
 
 void main() {
 
@@ -44,10 +44,31 @@ void main() {
                               200, 122, 150, 90,   92,  87, 177, 244,
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
-
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
 
 }
 
 /* Add other Implementation File Code Here */
+
+unsigned char find_maximum(unsigned char *ptr, unsigned int len) {
+ unsigned char max = *ptr; // Initial value of max = test[0]
+ unsigned int i;
+
+ // Return 0 if pointer points to NULL
+ if (ptr == NULL){
+  return 0;
+ }
+
+ if (len <= 0){
+  len = 1;
+ }
+
+ // Find the maximum value by assigning the greater to variable max 
+ for (i = 0; i <= len; i++){
+  if (max < *(ptr+i)){
+   max = *(ptr+i);
+  }
+ }
+ return max;
+}
