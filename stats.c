@@ -46,7 +46,7 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
-
+ 
 }
 
 /* Add other Implementation File Code Here */
@@ -65,10 +65,33 @@ unsigned char find_maximum(unsigned char *ptr, unsigned int len) {
  }
 
  // Find the maximum value by assigning the greater to variable max 
- for (i = 0; i <= len; i++){
+ for (i = 0; i < len; i++){
   if (max < *(ptr+i)){
    max = *(ptr+i);
   }
  }
  return max;
 }
+
+unsigned char find_minimum(unsigned char *ptr, unsigned int len) {
+ unsigned char min = *ptr; // Initial value of max = test[0]
+ unsigned int i;
+
+ // Return 0 if pointer points to NULL
+ if (ptr == NULL){
+  return 0;
+ }
+
+ if (len <= 0){
+  len = 1;
+ }
+
+ // Find the minimum value by assigning the less number to variable min
+ for (i = 0; i < len; i++){
+  if (min > *(ptr+i)){
+   min = *(ptr+i);
+  }
+ }
+ return min;
+}
+
