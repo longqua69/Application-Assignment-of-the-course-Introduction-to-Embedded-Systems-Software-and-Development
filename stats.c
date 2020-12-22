@@ -74,7 +74,7 @@ unsigned char find_maximum(unsigned char *ptr, unsigned int len) {
 }
 
 unsigned char find_minimum(unsigned char *ptr, unsigned int len) {
- unsigned char min = *ptr; // Initial value of max = test[0]
+ unsigned char min = *ptr; // Initial value of min = test[0]
  unsigned int i;
 
  // Return 0 if pointer points to NULL
@@ -93,5 +93,26 @@ unsigned char find_minimum(unsigned char *ptr, unsigned int len) {
   }
  }
  return min;
+}
+
+unsigned char find_mean(unsigned char *ptr, unsigned int len) {
+ unsigned long mean = 0; // Initial value of mean
+ unsigned int i;
+
+ // Return 0 if pointer points to NULL
+ if (ptr == NULL){
+  return 0;
+ }
+
+ if (len <= 0){
+  len = 1;
+ }
+
+ // Find the mean value
+ for (i = 0; i < len; i++){
+  mean = mean + *ptr;
+  ptr++;
+ }
+ return mean / len;
 }
 
