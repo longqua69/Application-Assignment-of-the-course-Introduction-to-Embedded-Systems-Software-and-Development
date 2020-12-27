@@ -45,8 +45,7 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
-  sort_array(test, 40);
-  //printf("%u\n", find_maximum(test, 40));
+  printf("%u\n", find_median(test, 40));
 }
 
 /* Add other Implementation File Code Here */
@@ -142,4 +141,40 @@ void sort_array(unsigned char *ptr, unsigned int len) {
   }
   printf("Sort[%u]: %u\n", i, sort[i]);
  } 
+}
+
+unsigned char find_median(unsigned char *ptr, unsigned int len) {
+ unsigned char sort[SIZE];
+ unsigned int sum = 0;
+ unsigned char median;
+ sort[0] = *ptr;
+ unsigned int temp = 0;
+ // Assign sort[i] = test[i]
+ for (unsigned int i = 0; i < SIZE; i++) {
+  sort[i] = *(ptr + i);
+ }
+ 
+ for (unsigned int i = 0; i < SIZE; i++) {
+  for (unsigned int j = i + 1; j < SIZE; j++)
+  {
+   if (sort[i] < sort[j]) {
+    temp = sort[j];
+
+    sort[j] = sort[i];
+
+    sort[i] = temp;
+   }
+   else {
+    sort[i] = sort[i];
+   }
+  }
+ }
+ 
+ if (SIZE % 2 == 0) {
+  median = (sort[SIZE/2] + sort[(SIZE/2) - 1]) / 2;
+ }
+ else {
+  median = sort[SIZE/2 + 1];
+ }
+ return median;
 }
