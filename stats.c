@@ -28,7 +28,6 @@
 #define SIZE (40)
 
 void print_array(unsigned char *ptr);
-//void sort_array(unsigned char *ptr);
 void print_statistics(unsigned char *ptr);
 unsigned char find_median(unsigned char *ptr, unsigned int len);
 unsigned char find_minimum(unsigned char *ptr, unsigned int len);
@@ -45,7 +44,8 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
-  printf("%u\n", find_median(test, 40));
+  print_statistics(test);
+  print_array(test);
 }
 
 /* Add other Implementation File Code Here */
@@ -177,4 +177,17 @@ unsigned char find_median(unsigned char *ptr, unsigned int len) {
   median = sort[SIZE/2 + 1];
  }
  return median;
+}
+
+void print_statistics(unsigned char *ptr) {
+ printf("Minimun of the array: %u\n", find_minimum(ptr, SIZE));
+ printf("Maximum of the array: %u\n", find_maximum(ptr, SIZE));
+ printf("Mean of the array: %u\n", find_mean(ptr, SIZE));
+ printf("Median of the array: %u\n", find_median(ptr, SIZE));
+}
+
+void print_array(unsigned char *ptr) {
+ for (int i = 0; i < SIZE; i++) {
+  printf("Array[%u]: %u\n", i, *(ptr + i)); 
+ }
 }
