@@ -28,14 +28,13 @@
 #define SIZE (40)
 
 void print_array(unsigned char *ptr);
-void sort_array(unsigned char *ptr);
+//void sort_array(unsigned char *ptr);
 void print_statistics(unsigned char *ptr);
 unsigned char find_median(unsigned char *ptr, unsigned int len);
 unsigned char find_minimum(unsigned char *ptr, unsigned int len);
 unsigned char find_maximum(unsigned char *ptr, unsigned int len);
 unsigned char find_mean(unsigned char *ptr, unsigned int len);
-unsigned char val;
-unsigned char *p;
+void sort_array(unsigned char *ptr, unsigned int len);
 
 void main() {
 
@@ -46,7 +45,8 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
- 
+  sort_array(test, 40);
+  //printf("%u\n", find_maximum(test, 40));
 }
 
 /* Add other Implementation File Code Here */
@@ -56,18 +56,18 @@ unsigned char find_maximum(unsigned char *ptr, unsigned int len) {
  unsigned int i;
 
  // Return 0 if pointer points to NULL
- if (ptr == NULL){
+ if (ptr == NULL) {
   return 0;
  }
 
- if (len <= 0){
+ if (len <= 0) {
   len = 1;
  }
 
  // Find the maximum value by assigning the greater to variable max 
- for (i = 0; i < len; i++){
-  if (max < *(ptr+i)){
-   max = *(ptr+i);
+ for (i = 0; i < len; i++) {
+  if (max < *(ptr + i)) {
+   max = *(ptr + i);
   }
  }
  return max;
@@ -78,18 +78,18 @@ unsigned char find_minimum(unsigned char *ptr, unsigned int len) {
  unsigned int i;
 
  // Return 0 if pointer points to NULL
- if (ptr == NULL){
+ if (ptr == NULL) {
   return 0;
  }
 
- if (len <= 0){
+ if (len <= 0) {
   len = 1;
  }
 
  // Find the minimum value by assigning the less number to variable min
- for (i = 0; i < len; i++){
-  if (min > *(ptr+i)){
-   min = *(ptr+i);
+ for (i = 0; i < len; i++) {
+  if (min > *(ptr + i)) {
+   min = *(ptr + i);
   }
  }
  return min;
@@ -100,19 +100,46 @@ unsigned char find_mean(unsigned char *ptr, unsigned int len) {
  unsigned int i;
 
  // Return 0 if pointer points to NULL
- if (ptr == NULL){
+ if (ptr == NULL) {
   return 0;
  }
 
- if (len <= 0){
+ if (len <= 0) {
   len = 1;
  }
 
  // Find the mean value
- for (i = 0; i < len; i++){
+ for (i = 0; i < len; i++) {
   mean = mean + *ptr;
   ptr++;
  }
- return mean / len;
+ return (mean / len);
 }
 
+void sort_array(unsigned char *ptr, unsigned int len) {
+ unsigned char sort[SIZE];
+ sort[0] = *ptr;
+ unsigned int temp = 0;
+ // Assign sort[i] = test[i]
+ for (unsigned int i = 0; i < SIZE; i++) {
+  sort[i] = *(ptr + i);
+ }
+ printf("The new array\n");
+ 
+ for (unsigned int i = 0; i < SIZE; i++) {
+  for (unsigned int j = i + 1; j < SIZE; j++)
+  {
+   if (sort[i] < sort[j]) {
+    temp = sort[j];
+
+    sort[j] = sort[i];
+
+    sort[i] = temp;
+   }
+   else {
+    sort[i] = sort[i];
+   }
+  }
+  printf("Sort[%u]: %u\n", i, sort[i]);
+ } 
+}

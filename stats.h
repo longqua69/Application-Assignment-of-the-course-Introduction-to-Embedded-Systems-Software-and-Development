@@ -42,8 +42,8 @@ void print_array(unsigned char *ptr);
  * 
  * @return    : No return value
  *****************************************************************************/
-void sort_array(unsigned char *ptr);
-
+//void sort_array(unsigned char *ptr);
+void sort_array(unsigned char *ptr, unsigned int len);
 
 /******************************************************************************
  * @brief print the statistics of the data set provided
