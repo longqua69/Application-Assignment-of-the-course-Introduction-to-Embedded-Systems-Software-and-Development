@@ -10,8 +10,8 @@
 #*****************************************************************************
 
 # Add your Source files to this variable
-SOURCES =
+SOURCES = ./%
 
 # Add your include paths to this variable
-INCLUDES = 
+INCLUDES = ../include/%
 
