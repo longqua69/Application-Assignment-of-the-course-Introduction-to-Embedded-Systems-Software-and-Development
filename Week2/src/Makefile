@@ -24,17 +24,17 @@
 include sources.mk
 
 # Platform Overrides
-PLATFORM = DMSP432
+PLATFORM = 
 
 # Architectures Specific Flags
-LINKER_FILE = ../msp432p401r.lds
-CPU = arm-none-eabi-ld 
-ARCH = thumb
+LINKER_FILE = 
+CPU = 
+ARCH = 
 SPECS = 
 
 # Compiler Flags and Defines
-CC = arm-none-eabi-gcc
-LD = arm-none-eabi-ld 
+CC = 
+LD = 
 LDFLAGS = 
 CFLAGS = 
 CPPFLAGs = 
