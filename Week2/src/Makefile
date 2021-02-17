@@ -24,7 +24,16 @@
 include sources.mk
 
 # Platform Overrides
-PLATFORM = 
+ifeq ($(PLATFORM),HOST)
+	CC = gcc
+else
+	ifeq ($(PLATFORM), MSP432)
+		CC = arm-none-eabi-gcc
+		LD = arm-none-eabi-ld
+	else
+		$(error No Platform supported)
+	endif
+endif
 
 # Architectures Specific Flags
 LINKER_FILE = 
@@ -33,8 +42,7 @@ ARCH =
 SPECS = 
 
 # Compiler Flags and Defines
-CC = 
-LD = 
+
 LDFLAGS = 
 CFLAGS = 
 CPPFLAGs = 
